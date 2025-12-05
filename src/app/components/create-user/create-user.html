@@ -1,0 +1,25 @@
+<div style="border: 1px solid black; padding: 20px; margin: 20px; max-width: 300px;">
+  <h3>Create New User</h3>
+
+  <form (ngSubmit)="onSubmit()">
+
+    <div style="margin-bottom: 10px;">
+      <label>Username:</label><br>
+      <input type="text" [(ngModel)]="user.username" name="username" required>
+    </div>
+
+    <div style="margin-bottom: 10px;">
+      <label>Email:</label><br>
+      <input type="email" [(ngModel)]="user.email" name="email" required>
+    </div>
+
+    <div style="margin-bottom: 10px;">
+      <label>Phone:</label><br>
+      <input type="text" [(ngModel)]="user.phoneNumber" name="phoneNumber" required>
+    </div>
+
+    <button type="submit">Create User</button>
+  </form>
+
+  <p style="color: blue; font-weight: bold;">{{ message }}</p>
+</div>
