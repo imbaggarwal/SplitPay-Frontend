@@ -1,0 +1,28 @@
+<div style="border: 1px solid blue; padding: 20px; margin: 20px; max-width: 300px;">
+  <h3>Find User</h3>
+
+  <div>
+    <input type="number" placeholder="Enter User ID" [(ngModel)]="searchId">
+    <button (click)="onSearch()">Search</button>
+  </div>
+
+  <p *ngIf="errorMessage" style="color: red;">{{ errorMessage }}</p>
+
+  <div *ngIf="foundUser" style="background-color: #f0f0f0; padding: 10px; margin-top: 10px;">
+
+    <p><strong>ID:</strong> {{ foundUser.id }}</p>
+    <p><strong>Name:</strong> {{ foundUser.username }}</p>
+    <p><strong>Email:</strong> {{ foundUser.email }}</p>
+    <p><strong>Phone:</strong> {{ foundUser.phoneNumber }}</p>
+
+    <hr> <div *ngIf="foundWallet">
+    <h4>Wallet Details</h4>
+    <p><strong>Balance:</strong> {{ foundWallet.balance }} {{ foundWallet.currency }}</p>
+  </div>
+
+    <div *ngIf="!foundWallet">
+      <p style="color: orange;">Fetching wallet...</p>
+    </div>
+
+  </div>
+</div>

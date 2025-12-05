@@ -24,4 +24,9 @@ export class UserService {
   createUser(user: User): Observable<User> {
     return this.http.post<User>(`${this.apiUrl}/create`, user);
   }
+
+  // Fetch user by ID
+  getUserById(id: number): Observable<User> {
+    return this.http.get<User>(`${this.apiUrl}/${id}`);
+  }
 }
