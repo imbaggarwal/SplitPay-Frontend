@@ -1,59 +1,47 @@
-# SplitpayFrontend
+# SplitPay - Frontend Dashboard
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.0.2.
+![Angular](https://img.shields.io/badge/Angular-21-red)
+![TypeScript](https://img.shields.io/badge/TypeScript-5-blue)
+![Bootstrap](https://img.shields.io/badge/Status-Development-yellow)
 
-## Development server
+The official web interface for the **SplitPay Distributed System**. This application serves as an **Aggregator**, consuming data from multiple microservices (User Service & Expense Service) to provide a unified user experience.
 
-To start a local development server, run:
+## 🏗 Architecture
+This frontend implements the **Client-Side Aggregation** pattern.
+* **User Data:** Fetched from `User Service` (Port 8080).
+* **Wallet Data:** Fetched from `Expense Service` (Port 8081).
+* **Communication:** REST API via Angular `HttpClient`.
 
-```bash
-ng serve
-```
+## 🚀 Key Features
+* **User Management:** Create users via a reactive form (Triggers Kafka events in backend).
+* **Real-time Lookup:** Fetch user details by ID.
+* **Cross-Service Data:** Automatically fetches and displays Wallet Balance from a separate microservice upon user lookup.
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## 🛠 Tech Stack
+* **Framework:** Angular 21 (Standalone Components)
+* **Language:** TypeScript
+* **State Management:** Local Component State (Signals ready)
+* **HTTP:** Angular HttpClient
 
-## Code scaffolding
+## 🏃‍♂️ How to Run
+1.  **Prerequisites:** Ensure the [SplitPay-Backend](https://github.com/imbaggarwal/SplitPay-Backend) is running locally via Docker.
+2.  **Install Dependencies:**
+    ```bash
+    npm install
+    ```
+3.  **Start Server:**
+    ```bash
+    ng serve
+    ```
+4.  **Access:**
+    Navigate to `http://localhost:4200`.
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## 📡 API Integration
+This frontend expects the following local backend services:
+* `http://localhost:8080` (User Service)
+* `http://localhost:8081` (Expense Service)
 
-```bash
-ng generate component component-name
-```
+To fix CORS issues, ensure backend controllers are annotated with `@CrossOrigin(origins = "http://localhost:4200")`.
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+---
+**Author:** Built by Bhavya Aggarwal
